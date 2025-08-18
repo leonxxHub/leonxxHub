@@ -247,8 +247,8 @@ game:GetService("ReplicatedStorage").RE:FindFirstChild("1RPNam1eTex1t"):FireServ
 loadstring(game:HttpGet(("https://raw.githubusercontent.com/KeonXHub/Red-gui/refs/heads/main/Red%20Hub%20Gui.txt")))()
 MakeWindow({
   Hub = {
-    Title = "LEON HUB | 1V | BROOKHAVEN | LEON",
-    Animation = "LEON BEST"
+    Title = "LEON HUB | BROOKHAVEN ",
+    Animation = "SCRIPTS LEON"
   },
   Key = {
     KeySystem = false,
@@ -4045,7 +4045,7 @@ end
 
 -- Adiciona o Toggle para ativar/desativar o Fling V14  
 AddButton(Main, {
-  Name = "☠️يعلق السيرفر☠️",
+  Name = "لاگ للسيـرفر ",
   Callback = function()
 tools = "FireX"
         shutdownserver = true
@@ -4215,7 +4215,7 @@ local TextBox = AddTextBox(Main, {
 })
 
 local Toggle = AddToggle(Main, {
-    Name = "تفعيل الاسبام",
+    Name = " بدأ السـبام",
     Default = false,
     Callback = function(Value)
         chatLooping = Value
