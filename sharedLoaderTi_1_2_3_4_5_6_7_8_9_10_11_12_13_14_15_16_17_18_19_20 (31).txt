@@ -4195,35 +4195,37 @@ end
 
 
 local Main = MakeTab({Name = "الشات"})
-local chatLooping = false
-local chatMessage = ""
-
-local TextBox = AddTextBox(Main, {
-    Name = " سبام شات",
-    Default = "",
-    PlaceholderText = "اكتب الرساله هنا",
-    ClearText = true,
-    Callback = function(Value)
-        chatMessage = Value
+AddSection(Main, {"سبام الشات"})
+  local TextSave
+  local tcs = game:GetService("TextChatService")
+  local chat = tcs.ChatInputBarConfiguration.TargetTextChannel
+  function sendchat(msg)
+    if tcs.ChatVersion == Enum.ChatVersion.LegacyChatService then
+      game:GetService("ReplicatedStorage"):FindFirstChild("DefaultChatSystemChatEvents").SayMessageRequest:FireServer(msg,"All")
+    else
+      chat:SendAsync(msg)
     end
-})
-
-local Toggle = AddToggle(Main, {
-    Name = "تفعيل الاسبام",
+  end
+  AddTextBox(Main, {
+    Name = "اكتب رسالتك",
+    Description = "اكتب الرسالة",
+    Flag = "هنا",
+    Default = false,
+    Callback = function(text)
+      TextSave = text
+    end
+  })
+  
+  
+  
+  AddToggle(Main, {
+    Name = "بدء السبام",
+    Description = "سبام كتابتك",
+    Flag = ".",
     Default = false,
     Callback = function(Value)
-        chatLooping = Value
-
-        if chatLooping then
-            task.spawn(function()
-                while chatLooping do
-                    if chatMessage ~= "" then
-                        game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(chatMessage, "All")
-                    end
-                    task.wait(2)
-                end
-            end)
-        end
-    end
-})
-local section = AddSection(Main, {"مهم استخدام امر الشات على مسؤوليتك حتمال يجيك باند سبام"})
+      getgenv().RaelHubSpawnText = Value
+      while getgenv().RaelHubSpawnText do
+        sendchat(TextSave)
+        task.wait(0.1)
+      end
