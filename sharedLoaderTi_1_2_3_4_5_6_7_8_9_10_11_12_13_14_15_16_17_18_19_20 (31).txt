@@ -1,4 +1,4 @@
-shared.LoaderTitle = " جار التحميل...";
+shared.LoaderTitle = "جارٍ تحميل سكربت المطور ليون";
 shared.LoaderKeyFrames = {
     [1] = {
         1,
@@ -228,7 +228,7 @@ Sound:Play();
 game.Players.LocalPlayer.Character.Humanoid.Health = 0
 wait(0.1)
 game.StarterGui:SetCore("SendNotification", {
-    Title = " اشتــغل";
+    Title = "لـيون 🔱";
     Text = "تم التفعيل بنجاح"; -- ARAB TEAM
     Duration = 5;
 })
@@ -240,15 +240,15 @@ local args = {
 game:GetService("ReplicatedStorage").RE:FindFirstChild("1RPNam1eTex1t"):FireServer(unpack(args))
 local args = {
     [1] = "RolePlayBio",
-    [2] = "سكــربت الــمطور LEON"
+    [2] = "LEON THE BEST"
 }
 
 game:GetService("ReplicatedStorage").RE:FindFirstChild("1RPNam1eTex1t"):FireServer(unpack(args))
 loadstring(game:HttpGet(("https://raw.githubusercontent.com/KeonXHub/Red-gui/refs/heads/main/Red%20Hub%20Gui.txt")))()
 MakeWindow({
   Hub = {
-    Title = "LEON HUB | BROOKHAVEN ",
-    Animation = "SCRIPTS LEON"
+    Title = "LEON HUB | 1V | BROOKHAVEN | LEON",
+    Animation = "LEON BEST"
   },
   Key = {
     KeySystem = false,
@@ -272,15 +272,15 @@ MinimizeButton({
     Stroke = true,
     StrokeColor = Color3.fromRGB(255, 0, 0)
 })
-local Main = MakeTab({Name = "الــمعلومات-"})
+local Main = MakeTab({Name = "معلومات"})
 AddDiscord(Main, {
     DiscordLink = "https://t.me/kyScript1 ",
-    DiscordIcon = "rbxassetid://71523372589347",
+    DiscordIcon = "rbxassetid://121343181700354",
     DiscordTitle = "  قناتي تليجرام "  })
 AddDiscord(Main, {
     DiscordLink = "https://t.me/scaxp ",
-    DiscordIcon = "rbxassetid://71523372589347",
-    DiscordTitle = "الگروب للسوالف",
+    DiscordIcon = "rbxassetid://121343181700354",
+    DiscordTitle = "قروبي",
     })
 AddButton(Main, {
   Name = "نسخ حسابي روبلوكس",
@@ -296,7 +296,7 @@ AddButton(Main, {
     setclipboard('i607le')
   end
 })
-local Main = MakeTab({Name = "التــخريب-"})
+local Main = MakeTab({Name = "التخريب والفلينق"})
 local section = AddSection(Main, {"قتل سفينة"})
 local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
@@ -1155,7 +1155,7 @@ AddButton(Main, {
         end
     end
 })
-local Main = MakeTab({Name = "الرئوسـ والارجـل- "})
+local Main = MakeTab({Name = "الرؤاس والارجل"})
 AddButton(Main, {
   Name = "رجل مقطوعه ",
   Callback = function()
@@ -1679,7 +1679,7 @@ game:GetService("ReplicatedStorage").Remotes.ChangeCharacterBody:InvokeServer(un
 
   end
 })
-local Main = MakeTab({Name = "الســكنات-"})
+local Main = MakeTab({Name = "سكن"})
 
 
 AddSection(Main, {"نسخ سكنات كاملة"})
@@ -2088,9 +2088,9 @@ game:GetService("ReplicatedStorage").Remotes.Wear:InvokeServer(unpack(args))
 
   end
 })
-local Main = MakeTab({Name = "الاغـاني-"})
+local Main = MakeTab({Name = "الاغاني"})
 AddTextBox(Main, {
-  Name = "جيب الـكود هنا",
+  Name = "اغاني",
   Default = "",
   PlaceholderText = "ادخل الكود",
   ClearText = true,
@@ -2110,7 +2110,7 @@ local args1 = {
 end 
 }) 
 AddTextBox(Main, {
-    Name = "اغاني مجانا",
+    Name = "اغاني بلاش",
     Default = "",
     PlaceholderText = "خلي الكود",
     ClearText = true,
@@ -2611,7 +2611,7 @@ local args = {
 game:GetService("ReplicatedStorage").RE:FindFirstChild("1NoMoto1rVehicle1s"):FireServer(unpack(args))
   end
 })
-local Main = MakeTab({Name = "الحماية-"})
+local Main = MakeTab({Name = "الحماية"})
 local Toggle = AddToggle(Main, {
   Name = "عدم فويد",
   Default = false,
@@ -2807,7 +2807,7 @@ createBangToggle("الوجه Bang", 1, true)
 createBangToggle("الوجه Bang 2", 1, true)
 
 
-local Main = MakeTab({Name = "الـملابس- "})  
+local Main = MakeTab({Name = "اكواد ملابس"})  
 AddButton(Main, {
   Name = "قفازات ايد سوداء",
   Callback = function()
@@ -3541,7 +3541,7 @@ game:GetService("ReplicatedStorage").RE:FindFirstChild("1Updat1eAvata1r"):FireSe
 })
 
 
-local Main = MakeTab({Name = "الــاعب-"})
+local Main = MakeTab({Name = "االاعب"})
 AddButton(Main, {
   Name = "Rejoin | اعادة دخول الى سيرفر",
   Callback = function()
@@ -4045,7 +4045,7 @@ end
 
 -- Adiciona o Toggle para ativar/desativar o Fling V14  
 AddButton(Main, {
-  Name = "لاگ للسيـرفر ",
+  Name = "☠️يعلق السيرفر☠️",
   Callback = function()
 tools = "FireX"
         shutdownserver = true
@@ -4090,17 +4090,11 @@ tools = "FireX"
   end
 })
 AddButton(Main, {
-  Name = "
-   ",
+  Name = "☠️تدمير العالم ☠️",
   Callback = function()
     game.Workspace:ClearAllChildren()
   end
 })
-AddButton(Main, {
-  Name = " تدمير الناس ",
-  Callback = function()
-    game.Workspace:ClearAllChildren()
-  end 
 
 AddButton(Main, {
   Name = "طرد الكل | kick all",
@@ -4200,7 +4194,7 @@ local function StopFly()
 end
 
 
-local Main = MakeTab({Name = "الشــات-"})
+local Main = MakeTab({Name = "الشات"})
 local chatLooping = false
 local chatMessage = ""
 
@@ -4215,7 +4209,7 @@ local TextBox = AddTextBox(Main, {
 })
 
 local Toggle = AddToggle(Main, {
-    Name = " بدأ السـبام",
+    Name = "تفعيل الاسبام",
     Default = false,
     Callback = function(Value)
         chatLooping = Value
@@ -4232,4 +4226,4 @@ local Toggle = AddToggle(Main, {
         end
     end
 })
-local section = AddSection(Main, {" انتــبه من الـباند! "})
+local section = AddSection(Main, {"مهم استخدام امر الشات على مسؤوليتك حتمال يجيك باند سبام"})
