@@ -259,7 +259,7 @@ local args = {
 }
 
 game:GetService("ReplicatedStorage").RE:FindFirstChild("1RPNam1eTex1t"):FireServer(unpack(args))
-loadstring(game:HttpGet(("https://raw.githubusercontent.com/KeonXHub/Red-gui/refs/heads/main/Red%20Hub%20Gui.txt")))()
+loadstring(game:HttpGet(("https://raw.githubusercontent.com/Y0dp/R7/refs/heads/main/TT.Lua")))()
 MakeWindow({
   Hub = {
     Title = "LEON HUB 1.2V | BROOKHAVEN ",
@@ -280,7 +280,7 @@ MakeWindow({
   }
 })
 MinimizeButton({
-    Image = "rbxassetid://95812506042529",
+    Image = "rbxassetid://106790627834966",
     Size = {50, 50},
     Color = Color3.fromRGB(255, 0, 0),
     Corner = true,
@@ -3702,7 +3702,7 @@ local function StopFly()
 end
 
 
-local Main = MakeTab({Name = "-الـبـيت"})
+local Main = MakeTab({Name = "البــيت-"})
 Paragraph = AddParagraph(Main, {"هنا تقدر تشيل الطرد"})
 AddTextBox(Main, {
     Name = "اسم",
@@ -7092,3 +7092,261 @@ local args = {
 game:GetService("ReplicatedStorage"):WaitForChild("RE"):WaitForChild("1RPNam1eTex1t"):FireServer(unpack(args))
   end
 })
+
+
+local FreezeTab = Window:MakeTab({
+    Title = "تجميد",
+    Icon = "rbxassetid://10723414308"
+})
+
+local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Player = Players.LocalPlayer
+
+local RE = ReplicatedStorage:WaitForChild("RE")
+local ClearEvent = RE:FindFirstChild("1Clea1rTool1s")
+local ToolEvent = RE:FindFirstChild("1Too1l")
+local FireEvent = RE:FindFirstChild("1Gu1n")
+
+local isFreezeAllEnabled = false
+local isFreezeSingleEnabled = false
+local targetPlayer = nil
+
+local function clearAllTools()
+    if ClearEvent then
+        ClearEvent:FireServer("ClearAllTools")
+    end
+end
+
+local function getAssault()
+    if ToolEvent then
+        ToolEvent:InvokeServer("PickingTools", "Assault")
+    end
+end
+
+local function hasAssault()
+    local backpack = Player:FindFirstChild("Backpack")
+    local character = Player.Character
+    return (backpack and backpack:FindFirstChild("Assault")) or (character and character:FindFirstChild("Assault"))
+end
+
+local function fireAtPart(targetPart)
+    local gunScript
+    if Player.Character and Player.Character:FindFirstChild("Assault") then
+        gunScript = Player.Character.Assault:FindFirstChild("GunScript_Local")
+    elseif Player.Backpack and Player.Backpack:FindFirstChild("Assault") then
+        gunScript = Player.Backpack.Assault:FindFirstChild("GunScript_Local")
+    end
+
+    if not gunScript or not targetPart then return end
+
+    local args = {
+        targetPart, targetPart, Vector3.new(1e14, 1e14, 1e14), targetPart.Position,
+        gunScript:FindFirstChild("MuzzleEffect"), gunScript:FindFirstChild("HitEffect"),
+        0, 0, { false },
+        { 25, Vector3.new(100, 100, 100), BrickColor.new(29), 0.25, Enum.Material.SmoothPlastic, 0.25 },
+        true, false
+    }
+    FireEvent:FireServer(unpack(args))
+end
+
+task.spawn(function()
+    while true do
+        if isFreezeAllEnabled or isFreezeSingleEnabled then
+            clearAllTools()
+            getAssault()
+            repeat task.wait(0.2) until hasAssault() or not (isFreezeAllEnabled or isFreezeSingleEnabled)
+
+            if hasAssault() then
+                if isFreezeAllEnabled then
+                    for _, p in ipairs(Players:GetPlayers()) do
+                        if not (isFreezeAllEnabled) then break end
+                        if p ~= Player and p.Character and p.Character:FindFirstChild("HumanoidRootPart") then
+                            fireAtPart(p.Character.HumanoidRootPart)
+                            task.wait(0.05)
+                        end
+                    end
+                elseif isFreezeSingleEnabled and targetPlayer and targetPlayer.Character and targetPlayer.Character:FindFirstChild("HumanoidRootPart") then
+                    fireAtPart(targetPlayer.Character.HumanoidRootPart)
+                    task.wait(0.1)
+                end
+            end
+        end
+        task.wait(0.5)
+    end
+end)
+
+FreezeTab:AddToggle({
+    Name = "تجميد الكل",
+    Description = "تجميد جميع اللاعبين في السيرفر",
+    Default = false,
+    Callback = function(state)
+        isFreezeAllEnabled = state
+        if state then
+            isFreezeSingleEnabled = false 
+        end
+    end
+})
+
+FreezeTab:AddSection({ Name = "تجميد فردي" })
+
+FreezeTab:AddDropdown({
+    Name = "اختر اللاعب",
+    Options = (function()
+        local list = {}
+        for _, p in ipairs(Players:GetPlayers()) do
+            if p ~= Player then
+                table.insert(list, p.Name)
+            end
+        end
+        return list
+    end)(),
+    Default = "...",
+    Callback = function(selected)
+        targetPlayer = Players:FindFirstChild(selected)
+    end
+})
+
+FreezeTab:AddToggle({
+    Name = "تجميد اللاعب المحدد",
+    Description = "تجميد اللاعب الذي تم اختياره فقط",
+    Default = false,
+    Callback = function(state)
+        isFreezeSingleEnabled = state
+        if state then
+            isFreezeAllEnabled = false
+        end
+    end
+})
+
+
+local Main = MakeTab({Name = "قـيـم بـاسـات"})
+
+
+local Paragraph = AddParagraph(Main, {"ملاحظه الجيم باسات تظهر لك فقط₰"})
+
+
+AddButton(Main, {
+  Name = "VIP",
+  Callback = function()
+ game:GetService("Players").LocalPlayer.PlayersBag.VIP.Value = true
+  end
+})
+
+
+AddButton(Main, {
+  Name = "نـجـمـة ",
+  Callback = function()
+ game:GetService("Players").LocalPlayer.PlayersBag.SilverPass.Value = true
+  end
+})
+
+
+AddButton(Main, {
+  Name = "سـرعـة ",
+  Callback = function()
+ game:GetService("Players").LocalPlayer.PlayersBag.SpeedPass200.Value = true
+  end
+})
+
+
+AddButton(Main, {
+  Name = "اغـانـي ",
+  Callback = function()
+ game:GetService("Players").LocalPlayer.PlayersBag.MusicPass.Value = true
+  end
+})
+
+
+AddButton(Main, {
+  Name = "الاحـصـنـة ",
+  Callback = function()
+ game:GetService("Players").LocalPlayer.PlayersBag.HorsePass.Value = true
+  end
+})
+
+
+AddButton(Main, {
+  Name = "قـفـل سيـارات ",
+  Callback = function()
+ game:GetService("Players").LocalPlayer.PlayersBag.VehiclePackPass.Value = true
+  end
+})
+
+
+AddButton(Main, {
+  Name = "قـصـر ",
+  Callback = function()
+ game:GetService("Players").LocalPlayer.PlayersBag.MansionPass.Value = true
+  end
+})
+
+
+AddButton(Main, {
+  Name = "وجـه ",
+  Callback = function()
+ game:GetService("Players").LocalPlayer.PlayersBag.FacePass.Value = true
+  end
+})
+
+
+AddButton(Main, {
+  Name = "تـكـسير الـبـيت ",
+  Callback = function()
+ game:GetService("Players").LocalPlayer.PlayersBag.DisasterPass.Value = true
+  end
+})
+
+
+AddButton(Main, {
+  Name = "الـسـفـيـنة ",
+  Callback = function()
+ game:GetService("Players").LocalPlayer.PlayersBag.BoatPass.Value = true
+  end
+})
+
+
+AddButton(Main, {
+  Name = "اراضـي ",
+  Callback = function()
+ game:GetService("Players").LocalPlayer.PlayersBag.PenthousePass.Value = true
+  end
+})
+
+
+AddButton(Main, {
+  Name = "نـار ",
+  Callback = function()
+ game:GetService("Players").LocalPlayer.PlayersBag.FirePass.Value = true
+  end
+})
+local Main = MakeTab({Name = "كشفESP"})
+local ESP = loadstring(game:HttpGet("https://kiriot22.com/releases/ESP.lua"))()
+ESP:Toggle(true)
+ESP.Players = false
+ESP.Names = false
+
+local Toggle = AddToggle(Main, {
+  Name = "تفعيل",
+  Default = false,
+  Callback = function(Value)
+    ESP.Players = Value
+  end
+})
+
+local Toggle = AddToggle(Main, {
+  Name = "اسامي الاعبين",
+  Default = false,
+  Callback = function(Value)
+    ESP.Names = Value
+  end
+})
+AddColorPicker(Main, {
+  Name = "لون ESP ",
+  Default = Color3.fromRGB(255, 255, 0),
+  Callback = function(Value)
+    ESP.Color = Value
+  end
+})
+
+
